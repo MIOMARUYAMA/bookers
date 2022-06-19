@@ -1,5 +1,11 @@
-<h2>title</h2>
-<p><%= @book.title %></p>
 
-<h2>body</h2>
-<p><%= @book.body %></P>
+<p>Title:</p>
+<%= @book.title %>
+
+<h2>Body:</h2>
+<%= @book.body %>
+
+<br>
+
+<%=link_to "Back", '/books' %>
+<%=link_to "Edit", edit_book_path(@book.id) %>
