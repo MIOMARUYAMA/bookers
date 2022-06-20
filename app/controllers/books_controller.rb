@@ -12,6 +12,7 @@ def create
     # ↓引数（）の中のbookは上でsaveしたbookインスタンスのidだよね？
     redirect_to book_path(@book.id)
   else
+    @books=Book.all
     render :index
   #フラッシュメッセージを表示させる（ググらないといけない...）
   end
