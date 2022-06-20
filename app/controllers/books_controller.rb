@@ -10,6 +10,7 @@ def create
   @book=Book.new(book_params)
   if @book.save
     # ↓引数（）の中のbookは上でsaveしたbookインスタンスのidだよね？
+   flash[:notice]="Book was successfully created."
     redirect_to book_path(@book.id)
   else
     @books=Book.all
@@ -27,9 +28,13 @@ end
   end
 
 def update
-  book=Book.find(params[:id])
-  book.update(book_params)
-  redirect_to book_path(book.id)
+  @book=Book.find(params[:id])
+if @book.update(book_params)
+  flash[:notice2]="Book was successfully updateted."
+  redirect_to book_path(@book.id)
+else
+  render :edit
+end
 end
 
 def destroy
@@ -37,6 +42,7 @@ def destroy
   book.destroy
   redirect_to books_path
 end
+
 
 private
 def book_params
